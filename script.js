@@ -7,6 +7,4 @@ const firebaseConfig = {
   appId: "1:355320485565:web:12a560937c49ff72edc9d4"
 };
 
-function verProjeto(url) {
-  window.open(url, '_blank');
-}
+

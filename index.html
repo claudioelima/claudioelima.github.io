@@ -1,33 +1,61 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Meu Portfólio</title>
-  <style>
-    body {
-      background-color: #000;
-      color: #fff;
-      text-align: center;
-      font-family: Arial, sans-serif;
-    }
-    img {
-      width: 200px;
-      border-radius: 50%;
-      margin-top: 30px;
-    }
-    h1 {
-      font-size: 3em;
-      margin-top: 20px;
-    }
-    p {
-      font-size: 1.2em;
-    }
-  </style>
+  <title>Portfólio Acadêmico</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <img src="https://gustavoguanabara.github.io/imagens/guanabara.png" alt="Minha Foto">
-  <h1>Seu Nome</h1>
-  <p>Bem-vindo ao meu site no GitHub Pages!</p>
+  <header>
+    <h1>João da Silva</h1>
+    <p>Desenvolvedor Web | Estudante de Análise e Desenvolvimento de Sistemas</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#educacao">Educação</a></li>
+      <li><a href="#competencias">Competências</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+    </ul>
+  </nav>
+
+  <section id="educacao">
+    <h2>Educação</h2>
+    <ul>
+      <li><strong>2023 - Atual</strong>: Tecnólogo em ADS – FATEC SJC</li>
+      <li><strong>2021 - 2022</strong>: Técnico em Informática – ETEC</li>
+    </ul>
+  </section>
+
+  <section id="competencias">
+    <h2>Competências Técnicas</h2>
+    <ul>
+      <li>HTML, CSS, JavaScript</li>
+      <li>PHP, MySQL</li>
+      <li>Git e GitHub</li>
+      <li>Node.js e Express</li>
+    </ul>
+  </section>
+
+  <section id="projetos">
+    <h2>Projetos Acadêmicos</h2>
+    <div class="projeto">
+      <h3>Site para Pizzaria</h3>
+      <p>Desenvolvimento completo de um site responsivo com painel administrativo para cadastro de produtos.</p>
+      <button onclick="verProjeto('https://meuprojeto.github.io/pizzaria')">Ver Projeto</button>
+    </div>
+    <div class="projeto">
+      <h3>CRUD de Tarefas</h3>
+      <p>Sistema de gerenciamento de tarefas com banco de dados e autenticação de usuário.</p>
+      <button onclick="verProjeto('https://meuprojeto.github.io/crud-tarefas')">Ver Projeto</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 João da Silva | <a href="mailto:joao@email.com">Contato</a></p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

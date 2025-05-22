@@ -1,50 +1,73 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Portfólio Acadêmico</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
 </head>
 <body>
   <header>
-    <h1>Claudio Lima</h1>
-    <p>Estudante de Tecnologia | Desenvolvedor Web</p>
+    <h1>João da Silva</h1>
+    <p>Portfólio Acadêmico com GitHub Pages, Firebase e FormSubmit</p>
   </header>
 
-  <nav>
-    <ul>
-      <li><a href="#educacao">Educação</a></li>
-      <li><a href="#competencias">Competências</a></li>
-      <li><a href="#projetos">Projetos</a></li>
-    </ul>
-  </nav>
+  <main>
+    <section id="educacao">
+      <h2>Educação</h2>
+      <ul>
+        <li><strong>2023 - Atual:</strong> Análise e Desenvolvimento de Sistemas - FATEC</li>
+        <li><strong>2021 - 2022:</strong> Técnico em Informática - ETEC</li>
+      </ul>
+    </section>
 
-  <section id="educacao">
-    <h2>Educação</h2>
-    <ul>
-      <li><strong>2023 - Atual:</strong> ADS – FATEC SJC</li>
-      <li><strong>2021 - 2022:</strong> Técnico em Informática – ETEC</li>
-    </ul>
-  </section>
+    <section id="competencias">
+      <h2>Competências Técnicas</h2>
+      <ul>
+        <li>HTML, CSS, JavaScript</li>
+        <li>PHP e MySQL</li>
+        <li>Git e GitHub</li>
+        <li>Node.js e Firebase</li>
+      </ul>
+    </section>
 
-  <section id="competencias">
-    <h2>Competências Técnicas</h2>
-    <ul>
-      <li>HTML, CSS, JavaScript</li>
-      <li>PHP e MySQL</li>
-      <li>Git e GitHub</li>
-    </ul>
-  </section>
+    <section id="projetos">
+      <h2>Projetos Acadêmicos</h2>
+      <div class="projeto">
+        <h3>Site para Pizzaria</h3>
+        <p>Projeto com HTML, CSS e JavaScript com painel administrativo.</p>
+        <button onclick="verProjeto('https://seunome.github.io/pizzaria')">Ver Projeto</button>
+      </div>
+    </section>
 
-  <section id="projetos">
-    <h2>Projetos Acadêmicos</h2>
-    <div class="projeto">
-      <h3>Site para Pizzaria</h3>
-      <p>Site institucional com menu, galeria e painel de controle.</p>
-      <button onclick="verProjeto('https://seuusuario.github.io/pizzaria')">Ver Projeto</button>
-    </div>
-  </section>
+    <section id="contato">
+      <h2>Contato</h2>
+      <form action="https://formsubmit.co/seuemail@email.com" method="POST">
+        <input type="text" name="nome" placeholder="Claudio Lima" required />
+        <input type="email" name="email" placeholder="claudioelima@gmail.com" required />
+        <textarea name="mensagem" placeholder="Sua mensagem" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+
+    <section id="login">
+      <h2>Área Restrita</h2>
+      <input type="email" id="email" placeholder="E-mail">
+      <input type="password" id="senha" placeholder="Senha">
+      <button onclick="login()">Entrar</button>
+      <p id="status"></p>
+    </section>
+
+    <section id="dados" style="display: none;">
+      <h2>Mensagens (Firestore)</h2>
+      <ul id="lista-dados"></ul>
+    </section>
+  </main>
 
   <footer>
     <p>© 2025 João da Silva | <a href="mailto:joao@email.com">Contato</a></p>

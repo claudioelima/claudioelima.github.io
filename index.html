@@ -2,77 +2,87 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfólio Acadêmico</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Pessoas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f0f0f0;
+    }
+    form {
+      background: #fff;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    #mensagem {
+      text-align: center;
+      margin-top: 15px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <form onsubmit="salvarPessoa(event)">
+    <h2>Cadastro de Pessoa</h2>
+    <input type="text" id="nome" placeholder="Nome completo" required />
+    <input type="email" id="email" placeholder="E-mail" required />
+    <button type="submit">Cadastrar</button>
+    <div id="mensagem"></div>
+  </form>
 
   <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
-</head>
-<body>
-  <header>
-    <h1>Claudio Lima</h1>
-    <p>Portfólio Acadêmico com GitHub Pages, Firebase e FormSubmit</p>
-  </header>
 
-  <main>
-    <section id="educacao">
-      <h2>Educação</h2>
-      <ul>
-        <li><strong>2023 - Atual:</strong> Análise e Desenvolvimento de Sistemas - FATEC</li>
-        <li><strong>2021 - 2022:</strong> Técnico em Informática - ETEC</li>
-      </ul>
-    </section>
+  <script>
+    // ✅ SUBSTITUA pelos seus dados do Firebase
+    const firebaseConfig = {
+      apiKey: "SUA_API_KEY",
+      authDomain: "SEU_DOMINIO.firebaseapp.com",
+      projectId: "SEU_PROJECT_ID",
+      storageBucket: "SEU_BUCKET.appspot.com",
+      messagingSenderId: "SEU_SENDER_ID",
+      appId: "SEU_APP_ID"
+    };
 
-    <section id="competencias">
-      <h2>Competências Técnicas</h2>
-      <ul>
-        <li>HTML, CSS, JavaScript</li>
-        <li>PHP e MySQL</li>
-        <li>Git e GitHub</li>
-        <li>Node.js e Firebase</li>
-      </ul>
-    </section>
+    // Inicializar Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
 
-    <section id="projetos">
-      <h2>Projetos Acadêmicos</h2>
-      <div class="projeto">
-        <h3>Site para Pizzaria</h3>
-        <p>Projeto com HTML, CSS e JavaScript com painel administrativo.</p>
-        <button onclick="verProjeto('https://seunome.github.io/pizzaria')">Ver Projeto</button>
-      </div>
-    </section>
+    function salvarPessoa(event) {
+      event.preventDefault();
 
-    <section id="contato">
-      <h2>Contato</h2>
-      <form action="https://formsubmit.co/claudioelima@email.com" method="POST">
-        <input type="text" name="nome" placeholder="" required />
-        <input type="email" name="email" placeholder="" required />
-        <textarea name="mensagem" placeholder="Olá, pessoal!" required></textarea>
-        <button type="submit">Enviar</button>
-      </form>
-    </section>
+      const nome = document.getElementById("nome").value;
+      const email = document.getElementById("email").value;
 
-    <section id="login">
-      <h2>Área Restrita</h2>
-      <input type="email" id="email" placeholder="E-mail">
-      <input type="password" id="senha" placeholder="Senha">
-      <button onclick="login()">Entrar</button>
-      <p id="status"></p>
-    </section>
+      db.collection("pessoas").add({
+        nome: nome,
+        email: email,
+        data: new Date()
+      })
+      .then(() => {
+        document.getElementById("mensagem").innerText = "Cadastro realizado com sucesso!";
+        document.getElementById("nome").value = "";
+        document.getElementById("email").value = "";
+      })
+      .catch((error) => {
+        console.error("Erro ao salvar:", error);
+        document.getElementById("mensagem").innerText = "Erro ao salvar. Tente novamente.";
+      });
+    }
+  </script>
 
-    <section id="dados" style="display: none;">
-      <h2>Mensagens (Firestore)</h2>
-      <ul id="lista-dados"></ul>
-    </section>
-  </main>
-
-  <footer>
-    <p>© 2025 João da Silva | <a href="mailto:joao@email.com">Contato</a></p>
-  </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>

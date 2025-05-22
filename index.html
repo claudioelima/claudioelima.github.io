@@ -47,25 +47,30 @@
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
 
   <script>
+    // 🔁 Substitua por seus dados do Firebase
     const firebaseConfig = {
-  apiKey: "AIzaSyD3H5u78DAsCvnvI0gzqGAbvYycZlmzSfU",
-  authDomain: "portfolio-academico-74f3f.firebaseapp.com",
-  projectId: "portfolio-academico-74f3f",
-  storageBucket: "portfolio-academico-74f3f.firebasestorage.app",
-  messagingSenderId: "355320485565",
-  appId: "1:355320485565:web:12a560937c49ff72edc9d4"
-};
+      apiKey: "SUA_API_KEY",
+      authDomain: "SEU_DOMINIO.firebaseapp.com",
+      projectId: "SEU_PROJECT_ID",
+      storageBucket: "SEU_BUCKET.appspot.com",
+      messagingSenderId: "SEU_SENDER_ID",
+      appId: "SEU_APP_ID"
+    };
 
-
-    // Inicializar Firebase
+    // Inicializa Firebase
     const app = firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
     function salvarPessoa(event) {
       event.preventDefault();
 
-      const nome = document.getElementById("nome").value;
-      const email = document.getElementById("email").value;
+      const nome = document.getElementById("nome").value.trim();
+      const email = document.getElementById("email").value.trim();
+
+      if (!nome || !email) {
+        alert("Preencha todos os campos.");
+        return;
+      }
 
       db.collection("pessoas").add({
         nome: nome,
@@ -79,7 +84,7 @@
       })
       .catch((error) => {
         console.error("Erro ao salvar:", error);
-        document.getElementById("mensagem").innerText = "Erro ao salvar. Tente novamente.";
+        document.getElementById("mensagem").innerText = "Erro ao salvar. Verifique o console.";
       });
     }
   </script>

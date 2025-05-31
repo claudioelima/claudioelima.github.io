@@ -1,53 +1,65 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Portfólio Acadêmico</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simulação de Cidade</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <header>
-    <h1>João da Silva</h1>
-    <p>Estudante de Tecnologia | Desenvolvedor Web</p>
+    <h1>Simulação de Cidade</h1>
+    <nav>
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#recursos">Recursos</a></li>
+        <li><a href="#estatisticas">Estatísticas</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <nav>
-    <ul>
-      <li><a href="#educacao">Educação</a></li>
-      <li><a href="#competencias">Competências</a></li>
-      <li><a href="#projetos">Projetos</a></li>
-    </ul>
-  </nav>
+  <section id="hero">
+    <h2>Construa, gerencie e expanda sua cidade virtual!</h2>
+    <button id="jogarBtn">Jogar Agora</button>
+  </section>
 
-  <section id="educacao">
-    <h2>Educação</h2>
+  <section id="sobre">
+    <h2>Sobre o Jogo</h2>
+    <p>O Simulação de Cidade é um jogo educativo onde você aprende a administrar uma cidade, tomando decisões estratégicas para garantir sua expansão e satisfação dos habitantes.</p>
+  </section>
+
+  <section id="recursos">
+    <h2>Recursos do Jogo</h2>
     <ul>
-      <li><strong>2023 - Atual:</strong> ADS – FATEC SJC</li>
-      <li><strong>2021 - 2022:</strong> Técnico em Informática – ETEC</li>
+      <li>🏙️ Construção de prédios e bairros</li>
+      <li>⚡ Gestão de energia e recursos naturais</li>
+      <li>🌦️ Sistema dinâmico de clima</li>
+      <li>📈 Indicadores de crescimento e felicidade</li>
     </ul>
   </section>
 
-  <section id="competencias">
-    <h2>Competências Técnicas</h2>
-    <ul>
-      <li>HTML, CSS, JavaScript</li>
-      <li>PHP e MySQL</li>
-      <li>Git e GitHub</li>
-    </ul>
-  </section>
-
-  <section id="projetos">
-    <h2>Projetos Acadêmicos</h2>
-    <div class="projeto">
-      <h3>Site para Pizzaria</h3>
-      <p>Site institucional com menu, galeria e painel de controle.</p>
-      <button onclick="verProjeto('https://seuusuario.github.io/pizzaria')">Ver Projeto</button>
+  <section id="gameplay" style="display: none;">
+    <h2>Gameplay</h2>
+    <p>A cada clique, sua cidade evolui, mas consome recursos! Gerencie bem.</p>
+    <div>
+      <p>Moedas: <span id="moedas">0</span></p>
+      <p>Energia: <span id="energia">100</span></p>
+      <p>Felicidade: <span id="felicidade">100</span>%</p>
+      <p>Tempo: <span id="tempo">Manhã</span></p>
+      <p>Clima: <span id="clima">Ensolarado</span></p>
     </div>
+    <button id="acaoBtn">Fazer Ação</button>
+    <p id="mensagem"></p>
+  </section>
+
+  <section id="estatisticas">
+    <h2>Estatísticas Gerais</h2>
+    <p>Veja suas estatísticas na seção de gameplay após clicar em "Jogar Agora".</p>
   </section>
 
   <footer>
-    <p>© 2025 João da Silva | <a href="mailto:joao@email.com">Contato</a></p>
+    <p>&copy; 2025 Simulação de Cidade. Todos os direitos reservados.</p>
   </footer>
 
   <script src="script.js"></script>
